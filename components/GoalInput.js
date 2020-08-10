@@ -10,22 +10,30 @@ const GoalInput = (props) => {
 
   const addGoalHandler = () => {
     props.onAddGoal(enteredGoal);
-    setEnteredGoal('');
+    setEnteredGoal("");
   };
 
   return (
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.justify_center}>
         <TextInput
-          placeholder="Course goal"
+          placeholder="Course Goal"
           style={styles.text_input}
           onChangeText={goalEventHandler}
           value={enteredGoal}
         />
-        {/* To close modal */}
-        <Button title="Close" color="red" onPress={props.onCancel} />
-        {/* Or cah have goan for ()=>props.onAddGoal{enteredGoal} to pass parms to App.js */}
-        <Button title="ADD" onPress={addGoalHandler} />
+
+        <View style={styles.btn_grp}>
+          {/* Or cah have goan for ()=>props.onAddGoal{enteredGoal} to pass parms to App.js */}
+          <View style={styles.btn}>
+            <Button title="ADD" onPress={addGoalHandler} />
+          </View>
+
+          {/* To close modal */}
+          <View style={styles.btn}>
+            <Button title="Close" color="red" onPress={props.onCancel} />
+          </View>
+        </View>
       </View>
     </Modal>
   );
@@ -33,7 +41,6 @@ const GoalInput = (props) => {
 
 const styles = StyleSheet.create({
   justify_center: {
-    // flexDirection: "row",
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
@@ -44,6 +51,14 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderBottomWidth: 1,
     marginBottom: 10,
+  },
+  btn_grp: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "80%",
+  },
+  btn: {
+    width: "40%",
   },
 });
 
